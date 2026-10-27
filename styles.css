@@ -313,3 +313,8 @@ hr { margin: 22px 0; border: 0; border-top: 1px solid var(--line); }
 .modal .panel-head{margin-bottom:12px}
 #answer{width:100%}
 @media(max-width:600px){.metric-row{gap:5px}.metric-row>div strong{font-size:20px}.modal-backdrop{padding:12px}.modal.card{max-height:calc(100dvh - 24px);padding:20px}.page-head .btn{width:100%}.pattern-row>div:nth-child(2){margin-left:0}.exercise-card .action-row .btn{flex:1}.exercise-card .action-row .btn.small{flex:0 0 38px;min-height:38px}.keyboard-hint{font-size:11px}.prompt{overflow-wrap:anywhere}}
+
+/* Keep statistic labels, values and notes on separate lines. */
+.stat{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start}
+.stat-label,.stat-value,.stat-note{display:block}
+.stat-value{margin:0 0 7px;white-space:nowrap}
