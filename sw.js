@@ -1,6 +1,6 @@
 /* DeutschLoop RU: cache only the public application shell, within this deployment. */
 const CACHE_PREFIX = 'deutschloop-ru-';
-const CACHE_NAME = CACHE_PREFIX + 'v4';
+const CACHE_NAME = CACHE_PREFIX + 'v5';
 const SHELL = ['./', './index.html', './styles.css', './content.js', './app.js', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png'];
 const shellURLs = SHELL.map(path => new URL(path, self.registration.scope).href);
 const shellPaths = new Set(shellURLs.map(url => new URL(url).pathname));
@@ -8,7 +8,7 @@ const indexURL = new URL('./index.html', self.registration.scope).href;
 const scopeURL = new URL(self.registration.scope);
 
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(shellURLs)).then(() => self.skipWaiting()));
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(shellURLs.map(url => new Request(url, { cache: 'reload' })))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', event => {
